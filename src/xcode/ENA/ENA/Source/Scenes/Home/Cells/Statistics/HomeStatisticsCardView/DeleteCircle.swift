@@ -34,16 +34,17 @@ class DeleteCircle: UIControl {
 
     override func draw(_ rect: CGRect) {
 		let context = UIGraphicsGetCurrentContext()
-		context?.addEllipse(in: rect)
+		let circleRect = CGRect(x: rect.width / 4, y: rect.height / 4, width: rect.width / 2, height: rect.height / 2)
+		context?.addEllipse(in: circleRect)
 		context?.setFillColor(UIColor.red.cgColor)
 		context?.fillPath()
 
 		context?.setLineCap(.round)
-		context?.setLineWidth(rect.width / 8) // default: rect-width 24, line-width: 3
+		context?.setLineWidth(circleRect.width / 8) // default: rect-width 24, line-width: 3
 		context?.setStrokeColor(UIColor.white.cgColor)
 		context?.addLines(between: [
-			CGPoint(x: rect.minX + rect.width / 5, y: rect.midY),
-			CGPoint(x: rect.maxX - rect.width / 5, y: rect.midY)
+			CGPoint(x: circleRect.minX + circleRect.width / 5, y: circleRect.midY),
+			CGPoint(x: circleRect.maxX - circleRect.width / 5, y: circleRect.midY)
 		])
 		context?.strokePath()
     }

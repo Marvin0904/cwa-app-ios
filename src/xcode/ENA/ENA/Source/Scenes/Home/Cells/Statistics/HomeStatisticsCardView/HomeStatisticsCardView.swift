@@ -90,7 +90,7 @@ class HomeStatisticsCardView: UIView {
 		// delete button/circle
 		let tap = UITapGestureRecognizer(target: self, action: #selector(onDeleteTapped(_:)))
 		deletionIndicator.addGestureRecognizer(tap)
-		deletionIndicator.center = CGPoint(x: frame.origin.x + 16, y: frame.origin.y) // magic number because of a very static design
+		deletionIndicator.center = CGPoint(x: frame.origin.x + 12, y: frame.origin.y) // magic number because of a very static design
 		addSubview(deletionIndicator)
 		deletionIndicator.isHidden = true // initial state
 	}
@@ -337,7 +337,8 @@ class HomeStatisticsCardView: UIView {
 	private var subscriptions = Set<AnyCancellable>()
 	private var viewModel: HomeStatisticsCardViewModel?
 	private lazy var deletionIndicator: UIView = {
-		let delete = DeleteCircle(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+		let delete = DeleteCircle(frame: CGRect(x: 0, y: 0, width: 48, height: 48))
+		delete.contentHorizontalAlignment = .left
 		return delete
 	}()
 
